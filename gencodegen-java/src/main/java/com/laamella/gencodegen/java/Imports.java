@@ -3,27 +3,32 @@ package com.laamella.gencodegen.java;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static java.lang.String.*;
+
 public class Imports {
 	private final Set<String> imports = new TreeSet<String>();
 
-	public void add(Class<?> classToImport){
+	public Imports add(Class<?> classToImport) {
 		imports.add(classToImport.getName());
+		return this;
 	}
-	
-	public void addStatic(Class<?> classToImport){
-		imports.add("static "+classToImport.getName()+".*");
+
+	public Imports addStatic(Class<?> classToImport) {
+		imports.add("static " + classToImport.getName() + ".*");
+		return this;
 	}
-	
-	public void add(String classToImport){
+
+	public Imports add(String classToImport) {
 		imports.add(classToImport);
+		return this;
 	}
-	
+
 	@Override
 	public String toString() {
-		final StringBuffer stringBuffer = new StringBuffer();
-		for (final String imp : imports) {
-			stringBuffer.append(String.format("import %s;\n", imp));
+		final StringBuilder imports = new StringBuilder();
+		for (final String imp : this.imports) {
+			imports.append(format("import %s;\n", imp));
 		}
-		return stringBuffer.toString();
+		return imports.toString();
 	}
 }

@@ -6,16 +6,16 @@ import java.util.List;
 public class Block extends ObjectContainer {
     private final List<Object> content = new ArrayList<Object>();
 
-    public Block(final int indent) {
-        super(indent);
+    public Block(final int indent, final String blockOpener, final String blockCloser) {
+        super(indent, blockOpener, blockCloser);
     }
 
-    public Block() {
-        super(0);
+    public Block(String blockOpener, String blockCloser) {
+        super(0, blockOpener, blockCloser);
     }
 
     public Block block() {
-        final Block block = new Block(getIndent());
+        final Block block = new Block(getIndent(), blockOpener, blockCloser);
         addObject(block);
         return block;
     }

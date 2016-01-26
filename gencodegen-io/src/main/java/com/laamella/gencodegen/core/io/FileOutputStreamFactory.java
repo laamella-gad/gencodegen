@@ -18,11 +18,8 @@ public class FileOutputStreamFactory implements OutputStreamFactory {
 		File targetDirectory = new File(outputDirectory, subDirectory);
 		targetDirectory.mkdirs();
 		final File file = new File(targetDirectory, name);
-		FileOutputStream fileOutputStream = new FileOutputStream(file);
-		try {
+		try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
 			streamer.stream(fileOutputStream);
-		} finally {
-			fileOutputStream.close();
 		}
 	}
 }

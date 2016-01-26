@@ -2,7 +2,7 @@ package com.laamella.gencodegen.java;
 
 import com.laamella.gencodegen.core.Block;
 
-public class ClassBody extends Block {
+public class ClassBody extends JavaBlock {
     public final Fields fields;
     public final Imports imports;
 

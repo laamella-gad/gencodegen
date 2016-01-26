@@ -1,9 +1,6 @@
 package com.laamella.gencodegen.java;
 
-
-import com.laamella.gencodegen.core.Block;
-
-public class Fields extends Block {
+public class Fields extends JavaBlock {
 	public Fields(int indent) {
 		super(indent);
 	}

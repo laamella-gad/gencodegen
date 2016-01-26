@@ -1,7 +1,7 @@
 package com.laamella.gencodegen.core.io;
 
 /**
- * Streams everything to System.out
+ * Streams everything to System.out, meant for debugging.
  */
 public class SystemOutputStreamFactory implements OutputStreamFactory {
 

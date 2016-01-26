@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import com.laamella.gencodegen.core.Block;
 import com.laamella.gencodegen.core.io.OutputStreamFactory;
 
-public class JavaFile extends Block {
+public class JavaFile extends JavaBlock {
     public final Imports imports = new Imports();
     public final String packageName;
     public final String name;
@@ -29,11 +29,7 @@ public class JavaFile extends Block {
     public void write(final OutputStreamFactory outputDir) throws Exception {
         checkIndentationMatches();
         final String packageDir = packageName.replace('.', File.separatorChar);
-        outputDir.stream(packageDir, name + ".java", new OutputStreamFactory.Streamer() {
-            public void stream(OutputStream outputStream) throws Exception {
-                outputStream.write(JavaFile.this.toString().getBytes("utf-8"));
-            }
-        });
+        outputDir.stream(packageDir, name + ".java", outputStream -> outputStream.write(JavaFile.this.toString().getBytes("utf-8")));
     }
 
 }

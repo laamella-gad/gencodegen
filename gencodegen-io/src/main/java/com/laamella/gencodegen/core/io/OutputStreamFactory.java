@@ -3,9 +3,12 @@ package com.laamella.gencodegen.core.io;
 import java.io.OutputStream;
 
 /**
- * Output abstraction.
+ * Output abstraction that supports writing files in extensive directory structures.
  */
 public interface OutputStreamFactory {
+	/**
+	 * A target stream.
+	 */
 	interface Streamer {
 		void stream(OutputStream outputStream) throws Exception;
 	}

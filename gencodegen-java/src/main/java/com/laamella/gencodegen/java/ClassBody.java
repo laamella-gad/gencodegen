@@ -1,7 +1,5 @@
 package com.laamella.gencodegen.java;
 
-import com.laamella.gencodegen.core.Block;
-
 public class ClassBody extends JavaBlock {
     public final Fields fields;
     public final Imports imports;
@@ -14,9 +12,9 @@ public class ClassBody extends JavaBlock {
         ln();
     }
 
-    public Block method(String opener, Object... args) {
+    public JavaBlock method(String opener, Object... args) {
         open(opener, args);
-        final Block methodBody = block();
+        final JavaBlock methodBody = block();
         close().ln();
         return methodBody;
     }

@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 /**
- * Makes streams to files.
+ * Streams everything to files in their respective subdirectories.
  */
 public class FileOutputStreamFactory implements OutputStreamFactory {
 	private final File outputDirectory;

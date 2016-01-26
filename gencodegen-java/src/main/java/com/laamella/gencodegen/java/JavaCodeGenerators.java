@@ -19,4 +19,7 @@ public class JavaCodeGenerators extends CoreCodeGenerators {
     public static String thro(Class<? extends Throwable> exception, Object... args) {
         return call("throw new " + exception.getSimpleName(), args);
     }
+
+    // TODO add getter
+    // TODO add setter
 }

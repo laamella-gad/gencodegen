@@ -25,7 +25,7 @@ public class JavaFileTest {
 				.add("// TODO write test")
 				.open("do")
 				.add("// Nothing!")
-				.close("while(true)");
+				.close("while(true);");
 
 		javaFileTest.write(new SystemOutputStreamFactory());
 		assertLooksLike(javaFileTest, "JavaFileTest.expected");

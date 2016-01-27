@@ -19,6 +19,7 @@
         <module>gencodegen-io</module>
         <module>gencodegen-core</module>
         <module>gencodegen-java</module>
+        <module>gencodegen-c</module>
     </modules>
 
     <build>

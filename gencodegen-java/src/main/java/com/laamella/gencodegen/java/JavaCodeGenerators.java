@@ -5,14 +5,7 @@ import com.laamella.gencodegen.core.CoreCodeGenerators;
 public class JavaCodeGenerators extends CoreCodeGenerators {
     public static String call(String methodName, Object... args) {
         final StringBuilder s = new StringBuilder(methodName + "(");
-        boolean first = true;
-        for (Object arg : args) {
-            if (!first) {
-                s.append(", ");
-            }
-            s.append(arg.toString());
-            first = false;
-        }
+        join(s, ", ", args);
         return s.append(")").toString();
     }
 

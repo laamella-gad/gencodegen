@@ -1,10 +1,8 @@
 package com.laamella.gencodegen.java;
 
 import java.io.File;
-import java.io.OutputStream;
 
-import com.laamella.gencodegen.core.Block;
-import com.laamella.gencodegen.core.io.OutputStreamFactory;
+import com.laamella.gencodegen.core.io.OutputAggregator;
 
 /**
  * The entry point for generating a Java file.
@@ -41,7 +39,7 @@ public class JavaFile extends JavaBlock {
     /**
      * Write the file to the file in the package directory where it belongs.
      */
-    public void write(final OutputStreamFactory outputDir) throws Exception {
+    public void write(final OutputAggregator outputDir) throws Exception {
         checkIndentationMatches();
         final String packageDir = packageName.replace('.', File.separatorChar);
         outputDir.stream(packageDir, name + ".java", outputStream -> outputStream.write(JavaFile.this.toString().getBytes("utf-8")));

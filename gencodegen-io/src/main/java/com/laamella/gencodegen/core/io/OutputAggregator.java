@@ -5,7 +5,7 @@ import java.io.OutputStream;
 /**
  * Output abstraction that supports writing files in extensive directory structures.
  */
-public interface OutputStreamFactory {
+public interface OutputAggregator {
 	/**
 	 * A target stream.
 	 */

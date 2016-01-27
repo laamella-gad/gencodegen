@@ -6,10 +6,10 @@ import java.io.FileOutputStream;
 /**
  * Streams everything to files in their respective subdirectories.
  */
-public class FileOutputStreamFactory implements OutputStreamFactory {
+public class FileOutputAggregator implements OutputAggregator {
 	private final File outputDirectory;
 
-	public FileOutputStreamFactory(File outputDirectory) {
+	public FileOutputAggregator(File outputDirectory) {
 		this.outputDirectory = outputDirectory;
 		outputDirectory.mkdirs();
 	}

@@ -6,13 +6,23 @@
         <artifactId>gencodegen-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>gencodegen-io</artifactId>
+    <artifactId>gencodegen-c</artifactId>
     <name>${project.groupId}:${project.artifactId}</name>
 
     <dependencies>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>com.laamella</groupId>
+            <artifactId>gencodegen-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.laamella</groupId>
+            <artifactId>gencodegen-io</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

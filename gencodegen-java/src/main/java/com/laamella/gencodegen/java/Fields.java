@@ -1,22 +1,18 @@
 package com.laamella.gencodegen.java;
 
+import com.laamella.gencodegen.core.UniqueListBlock;
+
 /**
  * The block just after starting a class. Here you can add fields with "addObject"
  */
-public class Fields extends JavaBlock {
+public class Fields extends UniqueListBlock<Fields> {
 	public Fields(int indent) {
 		super(indent);
 	}
 
-    /**
-     * Add a field. Using this method prevents duplicate fields.
-     */
 	@Override
-	public void addObject(Object o) {
-		if(contains(o)){
-			return;
-		}
-		super.addObject(o);
+	protected Fields newBlock(int indent) {
+		return new Fields(indent);
 	}
 
 }

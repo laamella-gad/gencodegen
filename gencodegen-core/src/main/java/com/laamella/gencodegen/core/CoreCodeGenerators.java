@@ -1,6 +1,17 @@
 package com.laamella.gencodegen.core;
 
 public class CoreCodeGenerators {
+    public static void join(StringBuilder into, String separator, Object... args) {
+        boolean first = true;
+        for (Object arg : args) {
+            if (!first) {
+                into.append(separator);
+            }
+            into.append(arg.toString());
+            first = false;
+        }
+    }
+
     /**
      * Uppercase the first letter of the string.
      */

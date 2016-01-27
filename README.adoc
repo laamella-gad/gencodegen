@@ -1,0 +1,16 @@
+image:https://badges.gitter.im/laamella-gad/gencodegen.svg[Join the chat at https://gitter.im/laamella-gad/gencodegen,link=https://gitter.im/laamella-gad/gencodegen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge]
+
+This is a generic code generator that I have been using in various projects. Next to the generic one, there is a Java code generator.
+
+It keeps track of the basic block structure of code, its hierarchy and indentation, and has a pleasant lack of complexity.
+
+It solves the following problems:
+
+* It is hard to keep indentation correct.
+* You won't generate the file from start to end, you will jump around adding stuff.
+* Generating code with a full Java AST will lead to an unreadable amount of method calls. (DSL hell :D )
+
+The basic "Block" class solves these problems.
+By building a hierarchy of pieces of code and rendering them in a separate step, it is possible to add pieces all over the hierarchy at any time.
+It knows at which indentation it should render itself, and you can change the indentation of child pieces before adding them.
+It provides only a few methods, and the sub-projects for specific languages only add the bare minimum of DSL functionality.

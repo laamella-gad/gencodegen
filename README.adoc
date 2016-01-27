@@ -1,4 +1,4 @@
-image:https://badges.gitter.im/laamella-gad/gencodegen.svg[Join the chat at https://gitter.im/laamella-gad/gencodegen,link=https://gitter.im/laamella-gad/gencodegen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge]
+image:https://badges.gitter.im/laamella-gad/gencodegen.svg[link=https://gitter.im/laamella-gad/gencodegen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge]
 
 This is a generic code generator that I have been using in various projects. Next to the generic one, there is a Java code generator.
 

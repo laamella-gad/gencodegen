@@ -10,6 +10,7 @@ It solves the following problems:
 * It is hard to keep indentation correct.
 * When generating code by printing strings it is impossible to go back and add something.
 * Generating code with a full Java AST will lead to an unreadable amount of method calls. (DSL hell :D )
+* Generating code with something like Xtext has a big learning curve.
 
 The basic "Block" class solves these problems.
 By building a hierarchy of pieces of code and rendering them in a separate step, it is possible to add pieces all over the hierarchy at any time.

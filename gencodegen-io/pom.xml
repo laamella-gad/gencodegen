@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.laamella</groupId>
         <artifactId>gencodegen-parent</artifactId>
-        <version>0.9</version>
+        <version>0.10-SNAPSHOT</version>
     </parent>
     <artifactId>gencodegen-io</artifactId>
     <name>${project.groupId}:${project.artifactId}</name>

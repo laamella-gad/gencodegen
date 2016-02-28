@@ -1,7 +1,7 @@
 package com.laamella.gencodegen.c;
 
 import com.laamella.gencodegen.core.Block;
-import com.laamella.gencodegen.core.io.OutputStreamFactory;
+import com.laamella.gencodegen.core.io.OutputAggregator;
 
 public class CFile extends CBlock {
 	public final Block header;
@@ -25,9 +25,9 @@ public class CFile extends CBlock {
 	/**
 	 * Write the file to the file in the package directory where it belongs.
 	 */
-	public void write(final OutputStreamFactory outputDir) throws Exception {
+	public void write(final OutputAggregator aggregator) throws Exception {
 		checkIndentationMatches();
-		outputDir.stream(subDirectory, fileName, outputStream -> outputStream.write(CFile.this.toString().getBytes("utf-8")));
+		aggregator.stream(subDirectory, fileName, outputStream -> outputStream.write(CFile.this.toString().getBytes("utf-8")));
 	}
 
 }

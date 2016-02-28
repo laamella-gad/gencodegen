@@ -24,12 +24,20 @@ public class CBlock extends Block<CBlock> {
 		return this;
 	}
 
-	public CBlock open() {
+	public CBlock lnopen() {
 		return ln().add("{").in();
 	}
 
-	public CBlock open(final String format, final Object... args) {
+	public CBlock open() {
+		return add("{").in();
+	}
+
+	public CBlock lnopen(final String format, final Object... args) {
 		return add(format, args).add("{").in();
+	}
+
+	public CBlock open(final String format, final Object... args) {
+		return add(format + " {", args).in();
 	}
 
 	public CBlock close(final String format, final Object... args) {
@@ -41,7 +49,7 @@ public class CBlock extends Block<CBlock> {
 	}
 
 	public CBlock function(String opener, Object... args) {
-		open(opener, args);
+		lnopen(opener, args);
 		final CBlock body = block();
 		close().ln();
 		return body;

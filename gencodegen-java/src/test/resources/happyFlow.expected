@@ -1,17 +1,18 @@
 package com.laamella.gencodegen.java;
 
-import bla.bla.*;
 import java.lang.String;
 import java.util.Map;
+import bla.bla.*;
 
 public class JavaFileTest {
 	public static final int ABC=3;
 	
 	@Test public void happyFlow() {
 		// TODO write test
+		int i=0;
 		do {
-			// Nothing!
-		} while(true);
+			i++;
+		} while(i<100);
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.laamella.gencodegen.c;
 
-import com.laamella.gencodegen.core.io.SystemOutputStreamFactory;
+import com.laamella.gencodegen.core.io.LogAggregator;
+import com.laamella.gencodegen.core.io.TestAggregator;
 import org.junit.Test;
 
 import static com.laamella.gencodegen.c.CCodeGenerators.call;
@@ -45,10 +46,31 @@ public class CBlockTest {
 				.state(call("printf", q("FPKLOVERE %16.7e %x\\n"), "FPKLOVEREf", "*(int *)(&FPKLOVEREf))"));
 
 
-//		file.define
-//		file.pragma
+		file.function("static\ndouble complex xdivc( double x, double complex y )   /* returns (real x) / (complex y) */")
+				.state("double complex z")
+				.state("double r, denom")
+				.ln()
+				.add("if ( fabs(Real(y)) >= fabs(Imag(y)) ) {     /* |Real(y)| >= |Imag(y)| */").in()
+				.add("if (fabs(Real(y)) == INFINITY) {   /* Imag(y) and Real(y) are infinite */").in()
+				.add("Real(z) = copysign(0.0,Real(y))")
+				.add("Imag(z) = copysign(0.0,-Imag(y))")
+				.close()
+				.add("else {                             /* |Real(y)| >= finite |Imag(y)| */").in()
+				.add("r = Imag(y)/Real(y)")
+				.add("denom = Real(y) + Imag(y)*r")
+				.add("Real(z) = x/denom")
+				.add("Imag(z) = (-x*r)/denom")
+				.close()
+				.close()
+				.add("else {                                /* |Real(y)| !>= |Imag(y)| */").in()
+				.state("r = Real(y)/Imag(y)")
+				.state("denom = r*Real(y) + Imag(y)")
+				.state("Real(z) = (r*x)/denom")
+				.state("Imag(z) = -x/denom")
+				.close()
 
+				.state("return z");
 
-		file.write(new SystemOutputStreamFactory());
+		file.write(new LogAggregator());
 	}
 }

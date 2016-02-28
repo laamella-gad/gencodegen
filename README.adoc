@@ -1,16 +1,82 @@
-image:https://badges.gitter.im/laamella-gad/gencodegen.svg[Join the chat at https://gitter.im/laamella-gad/gencodegen,link=https://gitter.im/laamella-gad/gencodegen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge]
+image:https://badges.gitter.im/laamella-gad/gencodegen.svg[link=https://gitter.im/laamella-gad/gencodegen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge]
 
-This is a generic code generator that I have been using in various projects. Next to the generic one, there is a Java code generator.
+= gencodegen =
 
-It keeps track of the basic block structure of code, its hierarchy and indentation, and has a pleasant lack of complexity.
+This is a generic code generator that is being used in various projects.
+There is a Java code generator, a C code generator, and the base on which it is easy to build support for more languages.
 
 It solves the following problems:
 
 * It is hard to keep indentation correct.
-* You won't generate the file from start to end, you will jump around adding stuff.
+* When generating code by printing strings it is impossible to go back and add something.
 * Generating code with a full Java AST will lead to an unreadable amount of method calls. (DSL hell :D )
+* Generating code with something like Xtext has a big learning curve.
 
 The basic "Block" class solves these problems.
 By building a hierarchy of pieces of code and rendering them in a separate step, it is possible to add pieces all over the hierarchy at any time.
 It knows at which indentation it should render itself, and you can change the indentation of child pieces before adding them.
 It provides only a few methods, and the sub-projects for specific languages only add the bare minimum of DSL functionality.
+
+This seems to be a good balance between being helpful and getting out of the way.
+
+== Java Example ==
+
+Create a new File, or Compilation Unit:
+----
+JavaFile file = new JavaFile("com.laamella.gencodegen.java", "JavaFileTest");
+----
+
+Add some imports. These can be added at any time, since they are in a an object that will get rendered on demand.
+----
+file.imports
+		.add(String.class)
+		.add(Map.class)
+		.add("bla.bla.*");
+----
+
+Add a class and give it a field. Notice how gencodegen only takes care of structure, braces and indentation.
+The field declaration is written out literally.
+----
+ClassBody testClass = file.class_("public class JavaFileTest");
+testClass.fields.add("public static final int ABC=3;");
+----
+
+Add a method.
+A method is a separate block.
+It can be extended even when other methods after it have been defined.
+"open" and "close" will handle indentation and braces.
+----
+testClass.method("@Test public void happyFlow()")
+		.add("// TODO write test")
+		.add("int i=0;")
+		.open("do")
+		.add("i++;")
+		.close("while(i<100);");
+----
+
+Write the file to the correct place:
+----
+file.write(aggregator);
+----
+
+The result:
+----
+package com.laamella.gencodegen.java;
+
+import java.lang.String;
+import java.util.Map;
+import bla.bla.*;
+
+public class JavaFileTest {
+	public static final int ABC=3;
+	
+	@Test public void happyFlow() {
+		// TODO write test
+		int i=0;
+		do {
+			i++;
+		} while(i<100);
+	}
+	
+}
+----

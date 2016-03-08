@@ -14,30 +14,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <developers>
+        <developer>
+            <name>Danny van Bruggen</name>
+        </developer>
+    </developers>
+
     <modules>
         <module>gencodegen-io</module>
         <module>gencodegen-core</module>
         <module>gencodegen-java</module>
         <module>gencodegen-c</module>
     </modules>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
-            </plugin>
-        </plugins>
-    </build>
-
+    
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -60,26 +49,67 @@
         </dependencies>
     </dependencyManagement>
 
-    <developers>
-        <developer>
-            <name>Danny van Bruggen</name>
-        </developer>
-    </developers>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-    <scm>
-        <connection>scm:git:git@github.com:laamella-gad/gencodegen.git</connection>
-        <developerConnection>scm:git:git@github.com:laamella-gad/gencodegen.git</developerConnection>
-        <url>https://github.com/laamella-gad/gencodegen.git</url>
-      <tag>HEAD</tag>
-  </scm>
 
     <distributionManagement>
         <repository>
             <id>bintray-laamella-gad-com.laamella</id>
             <name>laamella-gad-com.laamella</name>
-            <url>https://api.bintray.com/maven/laamella-gad/com.laamella/gencodegen/;publish=1</url>
+            <url>https://api.bintray.com/maven/laamella-gad/com.laamella/gencodegen/</url>
         </repository>
     </distributionManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:laamella-gad/gencodegen.git</connection>
+        <developerConnection>scm:git:git@github.com:laamella-gad/gencodegen.git</developerConnection>
+        <url>https://github.com/laamella-gad/gencodegen.git</url>
+        <tag>HEAD</tag>
+    </scm>
     
     <licenses>
         <license>

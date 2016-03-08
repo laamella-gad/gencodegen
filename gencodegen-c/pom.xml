@@ -3,7 +3,7 @@
     <parent>
         <groupId>com.laamella</groupId>
         <artifactId>gencodegen-parent</artifactId>
-        <version>0.10</version>
+        <version>0.11-SNAPSHOT</version>
     </parent>
     <artifactId>gencodegen-c</artifactId>
     <name>${project.groupId}:${project.artifactId}</name>
@@ -12,12 +12,12 @@
         <dependency>
             <groupId>com.laamella</groupId>
             <artifactId>gencodegen-core</artifactId>
-            <version>0.10</version>
+            <version>0.11-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.laamella</groupId>
             <artifactId>gencodegen-io</artifactId>
-            <version>0.10</version>
+            <version>0.11-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

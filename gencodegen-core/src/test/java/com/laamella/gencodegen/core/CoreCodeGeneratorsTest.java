@@ -1,10 +1,10 @@
 package com.laamella.gencodegen.core;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.laamella.gencodegen.core.CoreCodeGenerators.capitalize;
 import static com.laamella.gencodegen.core.CoreCodeGenerators.decapitalize;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CoreCodeGeneratorsTest {
     @Test

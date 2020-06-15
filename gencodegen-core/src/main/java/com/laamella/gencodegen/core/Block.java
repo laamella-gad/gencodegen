@@ -3,21 +3,17 @@ package com.laamella.gencodegen.core;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.InputStream;
-import java.io.Reader;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.String.*;
+import static java.lang.String.format;
 
 /**
  * A block of code. It is indented to a certain amount and has a sequence of toStringable things inside.
  *
  * @param <T> the type of the class that inherits from Block. This sets the return types for chaining calls to that type.
  */
-public abstract class Block<T extends Block> {
+public abstract class Block<T extends Block<?>> {
 	private static final Logger log = LoggerFactory.getLogger(Block.class);
 
 	private final int originalIndent;

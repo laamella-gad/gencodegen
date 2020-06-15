@@ -1,17 +1,17 @@
 package com.laamella.gencodegen.java;
 
 import com.laamella.gencodegen.core.io.TestAggregator;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 
-import static java.nio.file.Files.*;
-import static org.junit.Assert.assertEquals;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.nio.file.Files.readAllBytes;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JavaFileTest {
 	private final TestAggregator aggregator = new TestAggregator();
@@ -38,7 +38,7 @@ public class JavaFileTest {
 	}
 
 	private void assertLooksLike(String expectedFile, String actual) throws URISyntaxException, IOException {
-		String expected = new String(readAllBytes(Paths.get(getClass().getResource("/" + expectedFile).toURI())), Charset.forName("UTF-8"));
+		String expected = Files.readString(Paths.get(getClass().getResource("/" + expectedFile).toURI()));
 		assertEquals(expected, actual);
 	}
 

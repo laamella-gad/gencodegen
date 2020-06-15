@@ -1,8 +1,10 @@
 package com.laamella.gencodegen.java;
 
+import com.laamella.gencodegen.core.io.OutputAggregator;
+
 import java.io.File;
 
-import com.laamella.gencodegen.core.io.OutputAggregator;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * The entry point for generating a Java file.
@@ -26,7 +28,7 @@ public class JavaFile extends JavaBlock {
      * Start a new class in this file.
      * @param opener the class declaration, like "public class Demo&ltX> extends Object"
      * @param args arguments in case you have placeholders in the opener.
-     * @return a classbody with which the rest of the class can be defined.
+     * @return a class body with which the rest of the class can be defined.
      */
     public ClassBody class_(String opener, Object... args) {
         ln().open(opener, args);
@@ -42,7 +44,7 @@ public class JavaFile extends JavaBlock {
     public void write(final OutputAggregator outputDir) throws Exception {
         checkIndentationMatches();
         final String packageDir = packageName.replace('.', File.separatorChar);
-        outputDir.stream(packageDir, name + ".java", outputStream -> outputStream.write(JavaFile.this.toString().getBytes("utf-8")));
+        outputDir.stream(packageDir, name + ".java", outputStream -> outputStream.write(JavaFile.this.toString().getBytes(UTF_8)));
     }
 
 }

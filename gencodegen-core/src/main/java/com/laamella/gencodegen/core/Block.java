@@ -90,9 +90,7 @@ public abstract class Block<T extends Block<?>> {
      */
     public T add(final String format, final Object... args) {
         final StringBuilder indentation = new StringBuilder();
-        for (int i = 0; i < indent; i++) {
-            indentation.append("\t");
-        }
+        indentation.append("\t".repeat(indent));
         if (args.length == 0) {
             addObject(indentation + format + "\n");
         } else {

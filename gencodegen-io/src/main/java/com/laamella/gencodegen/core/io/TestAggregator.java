@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 /**
  * Streams everything to Strings, meant for unit testing.
  */
@@ -13,7 +15,7 @@ public class TestAggregator implements OutputAggregator {
     public void stream(String subDirectory, String name, Streamer streamer) throws Exception {
         try (final ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             streamer.stream(outputStream);
-            String content = outputStream.toString("utf-8");
+            String content = outputStream.toString(UTF_8);
             generatedFiles.add(new GeneratedFile(subDirectory, name, content));
         }
     }

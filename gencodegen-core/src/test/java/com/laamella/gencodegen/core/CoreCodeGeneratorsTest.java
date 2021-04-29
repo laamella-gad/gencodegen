@@ -21,6 +21,7 @@ public class CoreCodeGeneratorsTest {
     public void whenCapitalizingAnEmptyStringThenWeGetAnEmptyString() {
         assertEquals("", capitalize(""));
     }
+
     @Test
     public void whenDecapitalizingAStringWithALowerCaseInitialLetterThenNothingHappens() {
         assertEquals("abc", decapitalize("abc"));

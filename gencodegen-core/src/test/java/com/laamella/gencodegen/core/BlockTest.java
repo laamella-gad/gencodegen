@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BlockTest {
     @Test
-    public void x(){
+    public void x() {
         TestBlock testBlock = new TestBlock(0);
         assertEquals("", testBlock.toString());
     }

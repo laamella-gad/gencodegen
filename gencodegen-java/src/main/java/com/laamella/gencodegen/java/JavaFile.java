@@ -27,7 +27,7 @@ public class JavaFile extends JavaBlock {
     /**
      * Start a new class in this file.
      *
-     * @param opener the class declaration, like "public class Demo&ltX> extends Object"
+     * @param opener the class declaration, like "public class Demo&lt;X> extends Object"
      * @param args   arguments in case you have placeholders in the opener.
      * @return a class body with which the rest of the class can be defined.
      */
